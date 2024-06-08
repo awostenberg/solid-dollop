@@ -23,7 +23,7 @@ export default function Details() {
                     </thead>
                     <tbody>
                         {txns.map((item, index) =>
-                            <tr>
+                            <tr key={index} >
                                 <th>{index + 1}</th>
                                 <td>{item.date}</td>
                                 <td>{item.amount}</td>
