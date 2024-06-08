@@ -15,12 +15,6 @@ Then, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Finally, open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
@@ -29,4 +23,4 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 
 This project uses [DaisyUI](https://daisyui.com/)
 
-
+This project uses Belshe's [provable commit notation](https://github.com/RefactoringCombos/ArlosCommitNotation).
