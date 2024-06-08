@@ -6,6 +6,9 @@ const txns = [
     { 'amount': '+ 0.38981431', 'date': '01/29/2023', 'status': 'PENDING' },
 ]
 
+//todo asynchronously fetch details as I did in https://github.com/awostenberg/symmetrical-guide/blob/master/src/app/components/repos.tsx
+//and in micro test mock out with above txns as I did in https://github.com/awostenberg/symmetrical-guide/blob/master/src/app/components/repos.spec.tsx
+//this will be through the mempool api https://mempool.space/docs/api/rest#get-address-transactions
 
 export default function Details() {
     return (
