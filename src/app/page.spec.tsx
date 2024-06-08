@@ -34,9 +34,24 @@ describe('dashboard page', () => {
             expect(screen.getByRole('columnheader', {name:/status/i}));
         })
 
-        it.todo('renders the transaction amount');
-        it.todo('renders the transaction date');
-        it.todo('renders the transaction confirmation status');
+        const sample = [{'amount': 37801991, 'date':'05/01/2023', 'status':'PENDING'}] //soon to be actually used
+        it('renders the transaction amount', () => {
+
+            render(<Dashboard />)
+            expect(screen.getByText('+ 0.37801991'))
+
+        });
+        it('renders the transaction date', () => {
+            render(<Dashboard />)
+            expect(screen.getByText('05/01/2023'))
+        });
+
+        it('renders the transaction confirmation status', () => {
+            render(<Dashboard />)
+            expect(screen.getByText('PENDING'))
+        });
+
+        
 
     })
 
