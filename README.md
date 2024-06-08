@@ -6,9 +6,9 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run all the tests, on every change
+First, run all the tests
 ```bash
-npm test -- --watchAll
+npm test
 ```
 
 Then, run the development server:
