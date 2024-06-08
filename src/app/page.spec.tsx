@@ -25,7 +25,15 @@ describe('dashboard page', () => {
     })
     
     describe('details', () => {
-        
+        it('renders transaction column headers date, amount and status', () => {
+            render(<Dashboard />) ;
+
+  
+            expect(screen.getByRole('columnheader', {name:/date/i}));
+            expect(screen.getByRole('columnheader', {name:/amount/i}));
+            expect(screen.getByRole('columnheader', {name:/status/i}));
+        })
+
         it.todo('renders the transaction amount');
         it.todo('renders the transaction date');
         it.todo('renders the transaction confirmation status');
