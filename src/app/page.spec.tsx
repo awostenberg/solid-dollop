@@ -42,13 +42,13 @@ describe('dashboard page', () => {
 
         });
         it('renders the transaction date', () => {
-            render(<Dashboard />)
-            expect(screen.getByText('05/01/2023'))
+            render(<Dashboard />);
+            expect(screen.getByText('05/01/2023'));
         });
 
         it('renders the transaction confirmation status', () => {
-            render(<Dashboard />)
-            expect(screen.getByText('PENDING'))
+            render(<Dashboard />);
+            expect(screen.getAllByText('PENDING').length).toBeGreaterThanOrEqual(1);
         });
 
         

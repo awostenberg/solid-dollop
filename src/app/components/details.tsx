@@ -1,8 +1,11 @@
 
 
 const txns = [
-    {'amount':'+ 0.37801991', 'date':'05/01/2023','status':'PENDING'}
+    { 'amount': '+ 0.37801991', 'date': '05/01/2023', 'status': 'PENDING' },
+    { 'amount': '+ 0.14001991', 'date': '04/10/2023', 'status': 'PENDING' },
+    { 'amount': '+ 0.38981431', 'date': '01/29/2023', 'status': 'PENDING' },
 ]
+
 
 export default function Details() {
     return (
@@ -19,15 +22,16 @@ export default function Details() {
                         </tr>
                     </thead>
                     <tbody>
-                        
-                        {/* row 1 */}
-                        <tr>
-                            <th>1</th>
-                            <td>{txns[0].date}</td>
-                            <td>{txns[0].amount}</td>
-                            <td>{txns[0].status}</td>
-                        </tr>
-                    
+                        {txns.map((item, index) =>
+                            <tr>
+                                <th>{index + 1}</th>
+                                <td>{item.date}</td>
+                                <td>{item.amount}</td>
+                                <td>{item.status}</td>
+                            </tr>)
+
+                        }
+
                     </tbody>
                 </table>
             </div>
