@@ -24,3 +24,5 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 This project uses [DaisyUI](https://daisyui.com/)
 
 This project uses Belshe's [provable commit notation](https://github.com/RefactoringCombos/ArlosCommitNotation).
+
+I estimate the project at 29 points; details [here](https://tinyurl.com/5xz27ftr)
