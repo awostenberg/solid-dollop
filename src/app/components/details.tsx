@@ -18,7 +18,6 @@ export default function Details() {
                     {/* head */}
                     <thead>
                         <tr>
-                            <th></th>
                             <th>DATE</th>
                             <th>AMOUNT (BTC)</th>
                             <th>STATUS</th>
@@ -27,7 +26,6 @@ export default function Details() {
                     <tbody>
                         {txns.map((item, index) =>
                             <tr key={index} >
-                                <th>{index + 1}</th>
                                 <td>{item.date}</td>
                                 <td>{item.amount}</td>
                                 <td>{item.status}</td>
