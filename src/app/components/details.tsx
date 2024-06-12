@@ -1,14 +1,16 @@
+import { Bitcoin } from "./bitcoin";
 
 
-const txns = [
-    { 'amount': '+ 0.37801991', 'date': '05/01/2023', 'status': 'PENDING' },
-    { 'amount': '+ 0.14001991', 'date': '04/10/2023', 'status': 'PENDING' },
-    { 'amount': '+ 0.38981431', 'date': '01/29/2023', 'status': 'PENDING' },
+const sample_txns_from_figma = [
+    { 'amount': Bitcoin.fromSats(37801991), 'date': '05/01/2023', 'status': 'PENDING' },
+    { 'amount': Bitcoin.fromSats(14001991), 'date': '04/18/2023', 'status': 'PENDING' },
+    { 'amount': Bitcoin.fromSats(-38981431), 'date': '01/29/2023', 'status': 'PENDING' },
 ]
 
 //todo asynchronously fetch details as I did in https://github.com/awostenberg/symmetrical-guide/blob/master/src/app/components/repos.tsx
 //and in micro test mock out with above txns as I did in https://github.com/awostenberg/symmetrical-guide/blob/master/src/app/components/repos.spec.tsx
 //this will be through the mempool api https://mempool.space/docs/api/rest#get-address-transactions
+
 
 export default function Details() {
     return (
@@ -24,10 +26,10 @@ export default function Details() {
                         </tr>
                     </thead>
                     <tbody>
-                        {txns.map((item, index) =>
+                        {sample_txns_from_figma.map((item, index) =>
                             <tr key={index} >
                                 <td>{item.date}</td>
-                                <td>{item.amount}</td>
+                                <td>{item.amount.asDisplayString()}</td>
                                 <td>{item.status}</td>
                             </tr>)
 

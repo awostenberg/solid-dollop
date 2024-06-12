@@ -37,22 +37,37 @@ describe('dashboard page', () => {
         const sample = [{'amount': 37801991, 'date':'05/01/2023', 'status':'PENDING'}] //soon to be actually used
         it('renders the transaction amount', () => {
 
+     
             render(<Dashboard />)
-            expect(screen.getByText('+ 0.37801991'))
+            
+            const amount = screen.getAllByRole('cell')[1];  //first row first column
+            expect(amount.textContent).toContain('+ 0.37801991');
 
         });
+
         it('renders the transaction date', () => {
             render(<Dashboard />);
-            expect(screen.getByText('05/01/2023'));
+
+            const date = screen.getAllByRole('cell')[0];
+            expect(date.textContent).toContain('05/01/2023');
+
         });
 
         it('renders the transaction confirmation status', () => {
             render(<Dashboard />);
-            expect(screen.getAllByText('PENDING').length).toBeGreaterThanOrEqual(1);
+
+            const status = screen.getAllByRole('cell')[2];
+            expect(status.textContent).toContain('PENDING');
+       
         });
 
         
 
     })
 
+
+
+
+
 })
+
