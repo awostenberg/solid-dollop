@@ -4,7 +4,7 @@ import { Bitcoin } from "./bitcoin";
 const sample_txns_from_figma = [
     { 'amount': Bitcoin.fromSats(37801991), 'date': '05/01/2023', 'status': 'PENDING' },
     { 'amount': Bitcoin.fromSats(14001991), 'date': '04/18/2023', 'status': 'PENDING' },
-    { 'amount': Bitcoin.fromSats(-38981431), 'date': '01/29/2023', 'status': 'PENDING' },
+    { 'amount': Bitcoin.fromSats(-38981431), 'date': '01/29/2023', 'status': 'COMPLETED' },
 ]
 
 //todo asynchronously fetch details as I did in https://github.com/awostenberg/symmetrical-guide/blob/master/src/app/components/repos.tsx
