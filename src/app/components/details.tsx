@@ -2,9 +2,21 @@ import { MempoolBlocktime } from "./mempoolBlocktime";
 import { Bitcoin } from "./bitcoin";
 
 const sample_txns_from_figma = [
-    { 'amount': Bitcoin.fromSats(37801991), 'date': MempoolBlocktime.from(1682983427), 'status': 'PENDING' },
-    { 'amount': Bitcoin.fromSats(14001991), 'date': MempoolBlocktime.from(1681776000), 'status': 'PENDING' },
-    { 'amount': Bitcoin.fromSats(-38981431), 'date': MempoolBlocktime.from(1674950400), 'status': 'COMPLETED' },
+    {
+        'amount': Bitcoin.fromSats(37801991),
+        'date': MempoolBlocktime.from(1682983427),
+        'status': 'PENDING'
+    },
+    {
+        'amount': Bitcoin.fromSats(14001991),
+        'date': MempoolBlocktime.from(1681776000),
+        'status': 'PENDING'
+    },
+    {
+        'amount': Bitcoin.fromSats(-38981431),
+        'date': MempoolBlocktime.from(1674950400),
+        'status': 'COMPLETED'
+    },
 ]
 
 //todo asynchronously fetch details as I did in https://github.com/awostenberg/symmetrical-guide/blob/master/src/app/components/repos.tsx
