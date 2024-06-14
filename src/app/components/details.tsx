@@ -8,17 +8,17 @@ const sample_txns_from_figma = [
     {
         'amount': Bitcoin.from(37801991),
         'date': MempoolBlocktime.from(1682983427),
-        'status': MempoolStatus.from(false).toDisplayString(),
+        'status': MempoolStatus.from(false),
     },
     {
         'amount': Bitcoin.from(14001991),
         'date': MempoolBlocktime.from(1681776000),
-        'status': MempoolStatus.from(false).toDisplayString(),
+        'status': MempoolStatus.from(false),
     },
     {
         'amount': Bitcoin.from(-38981431),
         'date': MempoolBlocktime.from(1674950400),
-        'status': MempoolStatus.from(true).toDisplayString(),
+        'status': MempoolStatus.from(true),
     },
 ]
 
@@ -44,7 +44,7 @@ export default function Details() {
                             <tr key={index} >
                                 <td>{item.date.toDisplayString()}</td>
                                 <td>{item.amount.toDisplayString()}</td>
-                                <td>{item.status}</td>
+                                <td>{item.status.toDisplayString()}</td>
                             </tr>)
 
                         }
