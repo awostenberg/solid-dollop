@@ -2,9 +2,9 @@ import { MempoolBlocktime } from "./mempoolBlocktime";
 import { Bitcoin } from "./bitcoin";
 import { MempoolStatus } from "./mempoolStatus";
 
+import { LineItem } from "./lineItem";
 
-
-const sample_txns_from_figma = [
+const sample_txns_from_figma:LineItem[] = [
     {
         'amount': Bitcoin.from(37801991),
         'date': MempoolBlocktime.from(1682983427),
