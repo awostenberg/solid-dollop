@@ -1,21 +1,24 @@
 import { MempoolBlocktime } from "./mempoolBlocktime";
 import { Bitcoin } from "./bitcoin";
+import { MempoolStatus } from "./mempoolStatus";
+
+
 
 const sample_txns_from_figma = [
     {
         'amount': Bitcoin.fromSats(37801991),
         'date': MempoolBlocktime.from(1682983427),
-        'status': 'PENDING'
+        'status': MempoolStatus.from(false).toDisplayString(),
     },
     {
         'amount': Bitcoin.fromSats(14001991),
         'date': MempoolBlocktime.from(1681776000),
-        'status': 'PENDING'
+        'status': MempoolStatus.from(false).toDisplayString(),
     },
     {
         'amount': Bitcoin.fromSats(-38981431),
         'date': MempoolBlocktime.from(1674950400),
-        'status': 'COMPLETED'
+        'status': MempoolStatus.from(true).toDisplayString(),
     },
 ]
 
