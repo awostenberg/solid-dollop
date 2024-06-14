@@ -3,7 +3,7 @@ export class MempoolBlocktime {
     constructor(readonly mempool_block_time: number) { this.theDate = new Date(mempool_block_time * 1000); };;
     static from(blocktime: number) { return new MempoolBlocktime(blocktime); };
 
-    asDisplayString(): string {
+    toDisplayString(): string {
         return this.theDate.toLocaleDateString('en-US', {
             year: 'numeric',
             month: '2-digit',

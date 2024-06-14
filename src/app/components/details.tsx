@@ -6,17 +6,17 @@ import { MempoolStatus } from "./mempoolStatus";
 
 const sample_txns_from_figma = [
     {
-        'amount': Bitcoin.fromSats(37801991),
+        'amount': Bitcoin.from(37801991),
         'date': MempoolBlocktime.from(1682983427),
         'status': MempoolStatus.from(false).toDisplayString(),
     },
     {
-        'amount': Bitcoin.fromSats(14001991),
+        'amount': Bitcoin.from(14001991),
         'date': MempoolBlocktime.from(1681776000),
         'status': MempoolStatus.from(false).toDisplayString(),
     },
     {
-        'amount': Bitcoin.fromSats(-38981431),
+        'amount': Bitcoin.from(-38981431),
         'date': MempoolBlocktime.from(1674950400),
         'status': MempoolStatus.from(true).toDisplayString(),
     },
@@ -42,8 +42,8 @@ export default function Details() {
                     <tbody>
                         {sample_txns_from_figma.map((item, index) =>
                             <tr key={index} >
-                                <td>{item.date.asDisplayString()}</td>
-                                <td>{item.amount.asDisplayString()}</td>
+                                <td>{item.date.toDisplayString()}</td>
+                                <td>{item.amount.toDisplayString()}</td>
                                 <td>{item.status}</td>
                             </tr>)
 
