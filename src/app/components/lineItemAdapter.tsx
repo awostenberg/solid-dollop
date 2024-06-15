@@ -29,14 +29,15 @@ export class LineItemAdapter {
             
             const firstStatus = firstItem.status.confirmed;
             const firstMempoolBlocktime = firstItem.status.block_time; //todo item will not exist if status.confirmed=false
-            const hardwiredToFirstReplaceMe: LineItem[] = [
+            
+            const onlyMatchingLineItem: LineItem[] = [
                 {
                     'amount': Bitcoin.from(firstSats),
                     'status': MempoolStatus.from(firstStatus),
                     'date': MempoolBlocktime.from(firstMempoolBlocktime),
                 }
             ];
-            return hardwiredToFirstReplaceMe;
+            return onlyMatchingLineItem;
         }
     };
 
