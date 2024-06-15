@@ -6,37 +6,10 @@ import { Bitcoin } from "./bitcoin";  //todo could LineItem export these?
 import { MempoolBlocktime } from "./mempoolBlocktime";
 import { MempoolStatus } from "./mempoolStatus";
 
-class LineItemAdapter {
-    constructor(readonly mempoolJson: any) { this.mempoolJson = mempoolJson };
-    static from(j: any) { return new LineItemAdapter(j) };
-
-    value(): LineItem[] {
-        
-
-        if (!this.mempoolJson) {
-            return []
-        }
-
-        else {
-  
-            const firstSats = this.mempoolJson[0].vout[0].value;
-            const firstStatus = this.mempoolJson[0].status.confirmed;
-            const firstMempoolBlocktime = this.mempoolJson[0].status.block_time; //todo item will not exist if status.confirmed=false
-            const hardwiredToFirstReplaceMe: LineItem[] = [
-                {
-                    'amount': Bitcoin.from(firstSats),
-                    'status': MempoolStatus.from(firstStatus),
-                    'date': MempoolBlocktime.from(firstMempoolBlocktime),
-                }]
-            return hardwiredToFirstReplaceMe;
-        }
-    };
-
-}
-
 import sampleOneVoutOnly from './1wiz-oneVout.spec.json';
+import { LineItemAdapter } from "./lineItemAdapter";
 
-describe('applesauce', () => {
+describe('adapt mempool api json to LineItem', () => {
 
 
     // so mabye I'm mapping the /confirmed vouts/ .. over .. the api results thing
