@@ -7,6 +7,7 @@ import { MempoolStatus } from "./mempoolStatus";
 import { LineItemAdapter } from "./lineItemAdapter";
 
 import sampleOneVoutOnly from './1wiz-oneVout.spec.json';
+import sampleThreeVoutOnly from './1wiz-threeVout.spec.json';
 
 describe('adapt mempool api json to LineItem', () => {
 
@@ -46,7 +47,13 @@ describe('adapt mempool api json to LineItem', () => {
 
     })
     
-    it.todo('transforms many confirmed vout for address')
+    it('transforms many confirmed vout for address', () => {
+        const va = LineItemAdapter.from(sampleThreeVoutOnly);
+
+        const result: LineItem[] = va.only('1wiz18xYmhRX6xStj2b9t1rwWX4GKUgpv');
+
+        expect(result).toHaveLength(3);
+    })
 
     it.todo('oops - malformed vout struct')
     it.todo('likely oops - more than one matching vout for address in one mempool item');
