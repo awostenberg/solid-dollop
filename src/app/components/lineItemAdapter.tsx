@@ -17,6 +17,10 @@ export class LineItemAdapter {
         else {
             // in a given entry I think there can be but /one/ matching tx,
             // and it will be either a vout or vin. Begin with vout.
+            //  this seems mistaken.  In the 1wiz18xYmhRX6xStj2b9t1rwWX4GKUgpv sample 
+            //  the fifth occurance is a vin with a prevout to that 1wiz18. 
+            // the vout looks like a current balance and amount is inferred.
+    
 
             const results = this.mempoolJson.map(firstItem => {
                 const onlyMatchingVout = firstItem.vout.find(item =>
