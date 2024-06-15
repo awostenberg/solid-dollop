@@ -7,7 +7,7 @@ export class LineItemAdapter {
     constructor(readonly mempoolJson: any) { this.mempoolJson = mempoolJson; };
     static from(j: any) { return new LineItemAdapter(j); };
 
-    value(): LineItem[] {
+    only(desiredAddress:string): LineItem[] {
 
 
         if (!this.mempoolJson) {
@@ -15,10 +15,20 @@ export class LineItemAdapter {
         }
 
         else {
+            // in a given entry I think there can be but /one/ matching tx,
+            // and it will be either a vout or vin. Begin with vout.
 
-            const firstSats = this.mempoolJson[0].vout[0].value;
-            const firstStatus = this.mempoolJson[0].status.confirmed;
-            const firstMempoolBlocktime = this.mempoolJson[0].status.block_time; //todo item will not exist if status.confirmed=false
+            const firstItem = this.mempoolJson[0];
+            
+            const onlyMatchingVout = firstItem.vout.find(item => 
+                item.scriptpubkey_address === desiredAddress);
+            if (!onlyMatchingVout) {
+                return [];
+            }
+            const firstSats = onlyMatchingVout.value; 
+            
+            const firstStatus = firstItem.status.confirmed;
+            const firstMempoolBlocktime = firstItem.status.block_time; //todo item will not exist if status.confirmed=false
             const hardwiredToFirstReplaceMe: LineItem[] = [
                 {
                     'amount': Bitcoin.from(firstSats),

@@ -22,21 +22,29 @@ describe('adapt mempool api json to LineItem', () => {
     //          question: if (b) useful types (I"m using /any/ so far)
 
 
-    it('no vouts for address', () => {
+    it('no mempool items', () => {
         const va = LineItemAdapter.from('');
 
-        const result: LineItem[] = va.value();
+        const result: LineItem[] = va.only('42nope');
 
         expect(result).toHaveLength(0);
 
 
     })
-
     
+    it('no matching vouts for address', () => {
+        const va = LineItemAdapter.from(sampleOneVoutOnly);
+
+        const result: LineItem[] = va.only('42nope');
+
+        expect(result).toHaveLength(0);
+
+    })
+  
     it('transforms one confirmed vout for address', () => {
         const va = LineItemAdapter.from(sampleOneVoutOnly)
 
-        const result: LineItem[] = va.value();
+        const result: LineItem[] = va.only('1wiz18xYmhRX6xStj2b9t1rwWX4GKUgpv');
 
         expect(result).toHaveLength(1);
         const expectedAmount = Bitcoin.from(30236);
@@ -47,10 +55,12 @@ describe('adapt mempool api json to LineItem', () => {
         expect(result[0].status).toStrictEqual(expectedStatus);
 
     })
+    
     it.todo('transforms many confirmed vout for address')
 
-    it.todo('oops malformed vout struct')
-
+    it.todo('oops - malformed vout struct')
+    it.todo('likely oops - more than one matching vout for address in one mempool item');
+    
     it.todo('transforms date from status')
     it.todo('no date when not status.confirmed')
 
