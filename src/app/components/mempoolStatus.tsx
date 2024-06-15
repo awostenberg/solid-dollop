@@ -1,8 +1,7 @@
 export class MempoolStatus {
-    readonly status: boolean;
-    constructor(readonly s: boolean) { this.status = s }
-    static from(s: boolean) { return new MempoolStatus(s) }
+    constructor(readonly confirmed: boolean) { }
+    static from(status: boolean) { return new MempoolStatus(status) }
 
-    toDisplayString() { return this.status ? 'COMPLETED' : 'PENDING' }
+    toDisplayString() { return this.confirmed ? 'COMPLETED' : 'PENDING' }
 
 }
