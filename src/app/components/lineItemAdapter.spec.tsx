@@ -53,6 +53,16 @@ describe('adapt mempool api json to LineItem', () => {
         const result: LineItem[] = va.only('1wiz18xYmhRX6xStj2b9t1rwWX4GKUgpv');
 
         expect(result).toHaveLength(3);
+        expect(result[0].amount).toStrictEqual(Bitcoin.from(30236));
+        expect(result[0].date).toStrictEqual(MempoolBlocktime.from(1713994081));
+        
+        expect(result[1].amount).toStrictEqual(Bitcoin.from(22190));
+        expect(result[1].date).toStrictEqual(MempoolBlocktime.from(1659763398));
+
+        expect(result[2].amount).toStrictEqual(Bitcoin.from(5155));
+        expect(result[2].date).toStrictEqual(MempoolBlocktime.from(1647033214));
+
+        
     })
 
     it.todo('oops - malformed vout struct')
