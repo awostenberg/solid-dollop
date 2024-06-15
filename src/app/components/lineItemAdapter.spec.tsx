@@ -1,25 +1,15 @@
-// why applesauce? naming: it's a process https://www.digdeeproots.com/articles/naming-process/naming-as-a-process/
 
 import { LineItem } from "./lineItem";
 
-import { Bitcoin } from "./bitcoin";  //todo could LineItem export these?
+import { Bitcoin } from "./bitcoin";  //todo fe LineItem export these?
 import { MempoolBlocktime } from "./mempoolBlocktime";
 import { MempoolStatus } from "./mempoolStatus";
+import { LineItemAdapter } from "./lineItemAdapter";
 
 import sampleOneVoutOnly from './1wiz-oneVout.spec.json';
-import { LineItemAdapter } from "./lineItemAdapter";
 
 describe('adapt mempool api json to LineItem', () => {
 
-
-    // so mabye I'm mapping the /confirmed vouts/ .. over .. the api results thing
-    //  well what about that npm package  https://mempool.space/docs/api/rest#get-address-transactions
-    // I could use this jig to understand that, or build my own.
-    // or the npm json.. compare what it looks like?
-    //      a) if the npm looks like json above, never mind
-    //      b) if the npm is enriched compared to above, maybe..
-    //          question: if (b) can I fetch-mock if the npm?
-    //          question: if (b) useful types (I"m using /any/ so far)
 
 
     it('no mempool items', () => {
