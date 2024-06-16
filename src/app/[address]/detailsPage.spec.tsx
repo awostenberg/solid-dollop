@@ -31,7 +31,18 @@ describe('details page', () => {
 
   })
 
-  it.todo('renders transaction column headers date, balance and status')
+  it('renders transaction column headers date, balance and status', async () => {
+    fetchMock.mockResponseOnce(JSON.stringify(sampleOneVout));
+
+    const address = '1wiz18xYmhRX6xStj2b9t1rwWX4GKUgpv';
+    const jsx = await DetailsPage({ params: { address: address } });
+    render(jsx);
+
+    expect(screen.getByRole('columnheader', {name:/date/i}));
+    expect(screen.getByRole('columnheader', {name:/balance/i}));
+    expect(screen.getByRole('columnheader', {name:/status/i}));
+
+  })
   it.todo('renders balance in table')
   it.todo('renders date in table')
 

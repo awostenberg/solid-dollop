@@ -14,17 +14,35 @@ const fetchMempoolConfirmedTransactions = async (address: string) => {
     return finalResult;
 
 }
-type ApplesauceComponentProps = {
+type DetailsPageComponentProps = {
     params: {
         address: string;
     }
 }
-const DetailsPage = async ({ params: { address } }: ApplesauceComponentProps) => {
+const DetailsPage = async ({ params: { address } }: DetailsPageComponentProps) => {
 
     const results = await fetchMempoolConfirmedTransactions(address)
 
     return (<div>
         <h1>{address}</h1>
+        <div>
+            <div className="overflow-x-auto">
+                <table className="table">
+                    {/* head */}
+                    <thead>
+                        <tr>
+                            <th>DATE</th>
+                            <th>BALANCE (BTC)</th>
+                            <th>STATUS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>)
 
 };
