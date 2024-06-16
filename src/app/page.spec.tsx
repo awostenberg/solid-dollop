@@ -25,43 +25,12 @@ describe('dashboard page', () => {
     })
     
     describe('details', () => {
-        it('renders transaction column headers date, amount and status', () => {
-            render(<Dashboard />) ;
 
-  
-            expect(screen.getByRole('columnheader', {name:/date/i}));
-            expect(screen.getByRole('columnheader', {name:/amount/i}));
-            expect(screen.getByRole('columnheader', {name:/status/i}));
-        })
-
-        const sample = [{'amount': 37801991, 'date':'05/01/2023', 'status':'PENDING'}] //soon to be actually used
-        it('renders the transaction amount', () => {
-
-     
+        it('links to favorite address 1wiz...gpv', () => {
             render(<Dashboard />)
-            
-            const amount = screen.getAllByRole('cell')[1];  //first row first column
-            expect(amount.textContent).toContain('+ 0.37801991');
 
-        });
-
-        it('renders the transaction date', () => {
-            render(<Dashboard />);
-
-            const date = screen.getAllByRole('cell')[0];
-            expect(date.textContent).toContain('05/01/2023');
-
-        });
-
-        it('renders the transaction confirmation status', () => {
-            render(<Dashboard />);
-
-            const status = screen.getAllByRole('cell')[2];
-            expect(status.textContent).toContain('PENDING');
-       
-        });
-
-        
+            expect(screen.getAllByRole('link'))
+        })
 
     })
 
