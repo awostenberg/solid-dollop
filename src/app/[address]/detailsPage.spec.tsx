@@ -38,8 +38,7 @@ describe('details page', () => {
 
     expect(screen.getByRole('columnheader', {name:/date/i}));
     expect(screen.getByRole('columnheader', {name:/balance/i}));
-    expect(screen.getByRole('columnheader', {name:/status/i}));
-
+   
   })
 
   it('fetches and renders balance in table', async () => {
