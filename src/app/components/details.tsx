@@ -26,6 +26,10 @@ const sample_txns_from_figma:LineItem[] = [
 //and in micro test mock out with above txns as I did in https://github.com/awostenberg/symmetrical-guide/blob/master/src/app/components/repos.spec.tsx
 //this will be through the mempool api https://mempool.space/docs/api/rest#get-address-transactions
 
+//alas, while I now how to TDD this when it's a first class page and an async as required for fetch,
+//I could not in time alotted figure out how to do that as a compnent. 
+// so for now the fetch work and render is done as a nextJS page and not this compnent, over in app/[id]/DetailsPage.spec.tsx 
+
 export default function Details() {
     return (
         <div>
