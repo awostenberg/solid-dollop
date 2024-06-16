@@ -20,7 +20,7 @@ describe('details page', () => {
   it('renders address headline if confirmed in mempool', async () => {
     fetchMock.mockResponseOnce(JSON.stringify(sampleOneVout));
     const address = '1wiz18xYmhRX6xStj2b9t1rwWX4GKUgpv';
-    // Async? See https://www.marcusoft.net/2022/11/nextjs-testing-async-react-components.html
+    // Async render? See https://www.marcusoft.net/2022/11/nextjs-testing-async-react-components.html
     const jsx = await DetailsPage({ params: { address: address } });
 
     render(jsx);
@@ -42,17 +42,28 @@ describe('details page', () => {
 
   })
 
-  it('renders balance in table', async () => {
+  it('fetches and renders balance in table', async () => {
     fetchMock.mockResponseOnce(JSON.stringify(sampleOneVout));
     const address = '1wiz18xYmhRX6xStj2b9t1rwWX4GKUgpv';
     const jsx = await DetailsPage({ params: { address: address } });
     render(jsx);
 
     const balance = screen.getAllByRole('cell')[1]; //first row 2nd column
-
+    expect(balance.textContent).toBe('+ 0.00030236');
   })
 
-  it.todo('renders date in table')
+  it('fetches and renders date in table', async () => {
+    fetchMock.mockResponseOnce(JSON.stringify(sampleOneVout));
+    const address = '1wiz18xYmhRX6xStj2b9t1rwWX4GKUgpv';
+    const jsx = await DetailsPage({ params: { address: address } });
+    render(jsx);
+
+    const date = screen.getAllByRole('cell')[0];
+    expect(date.textContent).toContain('04/24/2024');
+
+});
+
+
 
 
 

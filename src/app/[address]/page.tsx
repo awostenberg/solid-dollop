@@ -39,7 +39,7 @@ const DetailsPage = async ({ params: { address } }: DetailsPageComponentProps) =
                     <tbody>
                     {results.map((item, index) =>
                             <tr key={index} >
-                                <td></td>
+                                <td>{item.date.toDisplayString()}</td>
                                 <td>{item.amount.toDisplayString()}</td>
                                 <td></td>
                             </tr>)
