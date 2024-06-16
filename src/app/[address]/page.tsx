@@ -37,7 +37,13 @@ const DetailsPage = async ({ params: { address } }: DetailsPageComponentProps) =
                         </tr>
                     </thead>
                     <tbody>
-
+                    {results.map((item, index) =>
+                            <tr key={index} >
+                                <td></td>
+                                <td>{item.amount.toDisplayString()}</td>
+                                <td></td>
+                            </tr>)
+                        }
 
                     </tbody>
                 </table>
