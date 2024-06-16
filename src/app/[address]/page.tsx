@@ -24,7 +24,7 @@ const DetailsPage = async ({ params: { address } }: DetailsPageComponentProps) =
     const results = await fetchMempoolConfirmedTransactions(address)
 
     return (<div>
-        <h1>{address}</h1>
+        <h1>{address} confirmed balance table</h1>
         <div>
             <div className="overflow-x-auto">
                 <table className="table">
@@ -33,15 +33,15 @@ const DetailsPage = async ({ params: { address } }: DetailsPageComponentProps) =
                         <tr>
                             <th>DATE</th>
                             <th>BALANCE (BTC)</th>
-                            <th>STATUS</th>
+
                         </tr>
                     </thead>
                     <tbody>
-                    {results.map((item, index) =>
+                        {results.map((item, index) =>
                             <tr key={index} >
                                 <td>{item.date.toDisplayString()}</td>
                                 <td>{item.amount.toDisplayString()}</td>
-                                <td></td>
+
                             </tr>)
                         }
 
