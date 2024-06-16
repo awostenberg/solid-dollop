@@ -20,7 +20,10 @@ export class LineItemAdapter {
             //  this seems mistaken.  In the 1wiz18xYmhRX6xStj2b9t1rwWX4GKUgpv sample 
             //  the fifth occurance is a vin with a prevout to that 1wiz18. 
             // the vout looks like a current balance and amount is inferred.
-    
+            // on the other hand, a deposit-only wallet like Satoshis genesis block,
+            // (1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa) the vouts do not keep increasing, 
+            // so is not showing a balance, but an amount
+
 
             const results = this.mempoolJson.map(firstItem => {
                 const onlyMatchingVout = firstItem.vout.find(item =>
