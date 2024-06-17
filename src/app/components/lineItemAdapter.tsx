@@ -4,7 +4,7 @@ import { MempoolBlocktime } from "./mempoolBlocktime";
 import { MempoolStatus } from "./mempoolStatus";
 
 export class LineItemAdapter {
-    constructor(readonly mempoolJson: any) { this.mempoolJson = mempoolJson; };
+    constructor(readonly mempoolJson: any) { };
     static from(j: any) { return new LineItemAdapter(j); };
 
     only(desiredAddress: string): LineItem[] {
@@ -25,14 +25,14 @@ export class LineItemAdapter {
             // so is not showing a balance, but an amount.
             // 
             // I confess: I do not understand vout. 
-            // So I'm off to reread chapter six:transactions of Antonopoulous's _mastering bitcion_
+            // So I'm off to reread chapter six:transactions of Antonopoulos's _mastering bitcion_
             // meanwhile, I'll just return amount, speculating that amount serves as balance for
             // utxo that is not reused, but used once, as in good privacy practice, and in bitcoin grandpa scenario.
 
 
-            const results = this.mempoolJson.map(firstItem => {
-                const onlyMatchingVout = firstItem.vout.find(item =>
-                    item.scriptpubkey_address === desiredAddress);
+            const resultsMaybe:[] = this.mempoolJson.map(mempoolItem => {
+                const onlyMatchingVout = mempoolItem.vout.find(voutItem =>
+                    voutItem.scriptpubkey_address === desiredAddress);
                 if (!onlyMatchingVout) {
                     return null;
                 };
@@ -40,8 +40,8 @@ export class LineItemAdapter {
 
                 const firstSats = onlyMatchingVout.value;
 
-                const firstStatus = firstItem.status.confirmed;
-                const firstMempoolBlocktime = firstItem.status.block_time; //todo item will not exist if status.confirmed=false
+                const firstStatus = mempoolItem.status.confirmed;
+                const firstMempoolBlocktime = mempoolItem.status.block_time; //todo item will not exist if status.confirmed=false
 
 
                 const onlyMatchingLineItem: LineItem =
@@ -56,8 +56,8 @@ export class LineItemAdapter {
 
             });
 
-            const finalResult = results.filter(item => item);
-            return finalResult;
+            const zeroOrOneItems = resultsMaybe.filter(item => item);
+            return zeroOrOneItems;
 
         };
     };
