@@ -1,3 +1,6 @@
+// adapt what was returned from the mempool API to a LineItem suitable for display
+// this is the adapter of ports and adapter architecture https://alistair.cockburn.us/hexagonal-architecture/
+
 import { LineItem } from "./lineItem";
 import { Bitcoin } from "./bitcoin";
 import { MempoolBlocktime } from "./mempoolBlocktime";
