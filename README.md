@@ -28,3 +28,4 @@ This project uses Belshe's [provable commit notation](https://github.com/Refacto
 I estimate the project at 29 points; details [here](https://tinyurl.com/5xz27ftr)
 
 Day 1 journal [s01-02](docs/s01-02.md) and [s03-04](docs/s03-04.md)
+Day 2 journal [s05-15](docs/s05-15.md)
