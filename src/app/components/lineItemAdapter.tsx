@@ -22,7 +22,12 @@ export class LineItemAdapter {
             // the vout looks like a current balance and amount is inferred.
             // on the other hand, a deposit-only wallet like Satoshis genesis block,
             // (1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa) the vouts do not keep increasing, 
-            // so is not showing a balance, but an amount
+            // so is not showing a balance, but an amount.
+            // 
+            // I confess: I do not understand vout. 
+            // So I'm off to reread chapter six:transactions of Antonopoulous's _mastering bitcion_
+            // meanwhile, I'll just return amount, speculating that amount serves as balance for
+            // utxo that is not reused, but used once, as in good privacy practice, and in bitcoin grandpa scenario.
 
 
             const results = this.mempoolJson.map(firstItem => {
