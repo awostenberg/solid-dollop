@@ -52,14 +52,9 @@ describe('details page', () => {
     const jsx = await DetailsPage({ params: { address: address } });
     render(jsx);
 
-    const balance = screen.getAllByRole('cell')[1]; //first row 2nd column
-    // name 'balance' here is not entirely accurate for it's really just the vout.
-    // and while that is accurate for single use deposit-only utxos 
-    // as in grandpa bitcoin (/docs/personae/grandpa_b.md) scenario,
-    // it is not generally correct.
-    // See chapter 6 _mastering bitcoin_ "transactions" for what must be done to compute balance
-
-    expect(balance.textContent).toBe('+ 0.00030236');
+    const amount = screen.getAllByRole('cell')[1]; //first row 2nd column
+   
+    expect(amount.textContent).toBe('+ 0.00030236');
   })
 
   it('fetches and renders date in table', async () => {
