@@ -1,7 +1,7 @@
 
 import { LineItem } from "./lineItem";
 
-import { Bitcoin } from "./bitcoin";  //todo fe LineItem export these?
+import { Bitcoin } from "./bitcoin";  //todo could LineItem export these?
 import { MempoolBlocktime } from "./mempoolBlocktime";
 import { MempoolStatus } from "./mempoolStatus";
 import { LineItemAdapter } from "./lineItemAdapter";
