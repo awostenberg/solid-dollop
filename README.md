@@ -8,6 +8,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 First, run all the tests
 ```bash
+npm install
 npm test -- --verbose
 ```
 
