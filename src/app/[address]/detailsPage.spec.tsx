@@ -32,6 +32,7 @@ describe('details page', () => {
     render(jsx);
 
     expect(screen.getByRole('heading').textContent).toContain('1wiz18xYmhRX6xStj2b9t1rwWX4GKUgpv')
+    expect(screen.getByRole('heading').textContent).toContain('confirmed amount');
 
   })
 

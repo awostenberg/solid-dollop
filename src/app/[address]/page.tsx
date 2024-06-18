@@ -24,7 +24,7 @@ const DetailsPage = async ({ params: { address } }: DetailsPageComponentProps) =
     const results = await fetchMempoolConfirmedTransactions(address)
 
     return (<div>
-        <h1>{address} confirmed balance table</h1>
+        <h1>{address} confirmed amounts table</h1>
         <div>
             <div className="overflow-x-auto">
                 <table className="table">
