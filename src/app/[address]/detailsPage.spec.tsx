@@ -3,7 +3,6 @@
 // to avoid unreliable tests due to internet connections and changing 3rd party (mempool) API.
 // But such loose coupling, while desirable poses a problem: how do I know my fetch mock matches the real API?
 // A contract integration test will check the mock behaves faithfully. See https://martinfowler.com/bliki/ContractTest.html
-// This is the I (for interface) in TDD guided by zombies https://blog.wingman-sw.com/tdd-guided-by-zombies
 
 import { render, screen } from '@testing-library/react';
 import DetailsPage from './page';
