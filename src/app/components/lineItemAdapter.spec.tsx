@@ -28,7 +28,8 @@ describe('adapt mempool api json to LineItem', () => {
 
         const result: LineItem[] = va.only('42nope');
 
-        expect(result).toHaveLength(0);
+        expect(result).toHaveLength(1);
+        expect(result[0].amount).toStrictEqual(Bitcoin.from(0));
 
     })
   

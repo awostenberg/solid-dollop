@@ -12,55 +12,47 @@ export class LineItemAdapter {
 
     only(desiredAddress: string): LineItem[] {
 
-
         if (!this.mempoolJson) {
             return [];
         }
 
         else {
-            // in a given entry I think there can be but /one/ matching tx,
-            // and it will be either a vout or vin. Begin with vout.
-            //  this seems mistaken.  In the 1wiz18xYmhRX6xStj2b9t1rwWX4GKUgpv sample 
-            //  the fifth occurance is a vin with a prevout to that 1wiz18. 
-            // the vout looks like a current balance and amount is inferred.
-            // on the other hand, a deposit-only wallet like Satoshis genesis block,
-            // (1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa) the vouts do not keep increasing, 
-            // so is not showing a balance, but an amount.
-            // 
-            // I confess: I do not understand vout. 
-            // So I'm off to reread chapter six:transactions of Antonopoulos's _mastering bitcion_
-            // meanwhile, I'll just return amount, speculating that amount serves as balance for
-            // utxo that is not reused, but used once, as in good privacy practice, and in bitcoin grandpa scenario.
 
+   
+            /* 
+                for each mempool item
+                    outs = sum vouts matching this address (there should be at most one) (precisely one?)
+                    ins = sum vins matching this address (there should be at most one)
+                    amount is outs - ins
+            */
 
-            const resultsMaybe:[] = this.mempoolJson.map(mempoolItem => {
-                const onlyMatchingVout = mempoolItem.vout.find(voutItem =>
-                    voutItem.scriptpubkey_address === desiredAddress);
-                if (!onlyMatchingVout) {
-                    return null;
-                };
+            const results:[] = this.mempoolJson.map(mempoolItem => {
 
-
-                const firstSats = onlyMatchingVout.value;
+                // sum the vouts matching address
+                const voutsSum = mempoolItem.vout.filter( vout => 
+                    vout.scriptpubkey_address === desiredAddress)
+                    .reduce( (sum:number, vout) => sum+vout.value,0);
 
                 const firstStatus = mempoolItem.status.confirmed;
                 const firstMempoolBlocktime = mempoolItem.status.block_time; //todo item will not exist if status.confirmed=false
+                
+                //todo sum the vins matching this address
 
+                const vinsSum = 0;
 
-                const onlyMatchingLineItem: LineItem =
+                const oneLineItem: LineItem =
                 {
-                    'amount': Bitcoin.from(firstSats),
+                    'amount': Bitcoin.from(voutsSum-vinsSum),
                     'status': MempoolStatus.from(firstStatus),
                     'date': MempoolBlocktime.from(firstMempoolBlocktime),
                 };
 
-                return onlyMatchingLineItem;
-
+                return oneLineItem;
 
             });
 
-            const zeroOrOneItems = resultsMaybe.filter(item => item);
-            return zeroOrOneItems;
+            return results;
+            
 
         };
     };
