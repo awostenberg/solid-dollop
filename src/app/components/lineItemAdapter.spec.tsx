@@ -72,7 +72,7 @@ describe('adapt mempool api json to LineItem', () => {
 
         const result: LineItem[] = va.only('1wiz18xYmhRX6xStj2b9t1rwWX4GKUgpv');
 
-        //the last two are what I'm interested in
+        //the last few are what I'm interested  - consider triming sample to item of interest
         expect(result).toHaveLength(11);
         const last = result.length-1;
         expect(result[last].amount).toStrictEqual(Bitcoin.from(1156220));
@@ -81,11 +81,7 @@ describe('adapt mempool api json to LineItem', () => {
     })
 
     it.todo('oops - malformed vout struct')
-    it.todo('likely oops - more than one matching vout for address in one mempool item');
-    
-    it.todo('transforms date from status')
+  
     it.todo('no date when not status.confirmed')
-
-
 
 })
