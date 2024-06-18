@@ -1,5 +1,5 @@
 
-// This renders the detail page for an address, using fetch mocks,
+// This checks it renders the detail page for an address, using fetch mocks,
 // to avoid unreliable tests due to internet connections and changing 3rd party (mempool) API.
 // But such loose coupling, while desirable poses a problem: how do I know my fetch mock matches the real API?
 // A contract integration test will check the mock behaves faithfully. See https://martinfowler.com/bliki/ContractTest.html
@@ -14,13 +14,13 @@ import fetchMock from 'jest-fetch-mock';
 fetchMock.enableMocks();
 
 describe('details page', () => {
-  let address:string;
+  let address: string;
   beforeEach(() => {
     fetchMock.resetMocks();
 
     fetchMock.mockResponseOnce(JSON.stringify(sampleOneVout));
     address = '1wiz18xYmhRX6xStj2b9t1rwWX4GKUgpv';
-    
+
   })
 
 
@@ -35,18 +35,18 @@ describe('details page', () => {
 
   })
 
-  it('renders transaction column headers date, balance and status', async () => {
+  it('renders transaction column headers date, amount and status', async () => {
 
     const jsx = await DetailsPage({ params: { address: address } });
 
     render(jsx);
 
-    expect(screen.getByRole('columnheader', {name:/date/i}));
-    expect(screen.getByRole('columnheader', {name:/amount/i})); 
-   
+    expect(screen.getByRole('columnheader', { name: /date/i }));
+    expect(screen.getByRole('columnheader', { name: /amount/i }));
+
   })
 
-  it('fetches and renders balance in table', async () => {
+  it('fetches and renders amount in table', async () => {
 
     const jsx = await DetailsPage({ params: { address: address } });
     render(jsx);
@@ -69,11 +69,7 @@ describe('details page', () => {
     const date = screen.getAllByRole('cell')[0];
     expect(date.textContent).toContain('04/24/2024');
 
-});
-
-
-
-
+  });
 
 
 })
