@@ -32,7 +32,7 @@ const DetailsPage = async ({ params: { address } }: DetailsPageComponentProps) =
                     <thead>
                         <tr>
                             <th>DATE</th>
-                            <th>BALANCE (BTC)</th>
+                            <th>AMOUNT (BTC)</th>
 
                         </tr>
                     </thead>

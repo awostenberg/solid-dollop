@@ -37,8 +37,11 @@ export class LineItemAdapter {
                 const firstMempoolBlocktime = mempoolItem.status.block_time; //todo item will not exist if status.confirmed=false
                 
                 //todo sum the vins matching this address
-
-                const vinsSum = 0;
+                const vinsSum = mempoolItem.vin.filter(vin => 
+                    vin.prevout.scriptpubkey_address === desiredAddress)
+                    .reduce( (sum:number, vin) => sum+vin.prevout.value,0);
+                
+                
 
                 const oneLineItem: LineItem =
                 {

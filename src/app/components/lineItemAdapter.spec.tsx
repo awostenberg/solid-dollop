@@ -8,9 +8,10 @@ import { LineItemAdapter } from "./lineItemAdapter";
 
 import sampleOneVoutOnly from './1wiz-oneVout.spec.json';
 import sampleThreeVoutOnly from './1wiz-threeVout.spec.json';
+import sampleVinAndVout from './1wiz-mixed-send-rcv-spec.json';
 
 describe('adapt mempool api json to LineItem', () => {
-
+ 
 
 
     it('no mempool items', () => {
@@ -48,7 +49,7 @@ describe('adapt mempool api json to LineItem', () => {
 
     })
     
-    it('transforms many confirmed vout for address', () => {
+    it('combines many confirmed vout only for address', () => {
         const va = LineItemAdapter.from(sampleThreeVoutOnly);
 
         const result: LineItem[] = va.only('1wiz18xYmhRX6xStj2b9t1rwWX4GKUgpv');
@@ -66,13 +67,25 @@ describe('adapt mempool api json to LineItem', () => {
         
     })
 
+    it('combines mixed vin and vout to a negative amount', () => {
+        const va = LineItemAdapter.from(sampleVinAndVout);
+
+        const result: LineItem[] = va.only('1wiz18xYmhRX6xStj2b9t1rwWX4GKUgpv');
+
+        //the last two are what I'm interested in
+        expect(result).toHaveLength(11);
+        const last = result.length-1;
+        expect(result[last].amount).toStrictEqual(Bitcoin.from(1156220));
+        expect(result[last-1].amount).toStrictEqual(Bitcoin.from(5884000));
+        expect(result[last-2].amount).toStrictEqual(Bitcoin.from(-7040220));
+    })
+
     it.todo('oops - malformed vout struct')
     it.todo('likely oops - more than one matching vout for address in one mempool item');
     
     it.todo('transforms date from status')
     it.todo('no date when not status.confirmed')
 
-    it.todo('transforms one vout to positive amount')
-    it.todo('transforms one vin to negative amount')
+
 
 })

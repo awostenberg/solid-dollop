@@ -42,7 +42,7 @@ describe('details page', () => {
     render(jsx);
 
     expect(screen.getByRole('columnheader', {name:/date/i}));
-    expect(screen.getByRole('columnheader', {name:/balance/i})); 
+    expect(screen.getByRole('columnheader', {name:/amount/i})); 
    
   })
 
